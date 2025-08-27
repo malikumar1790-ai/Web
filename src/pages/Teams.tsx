@@ -89,7 +89,7 @@ const Teams: React.FC = () => {
       name: 'Eman Sarfaraz',
       role: 'AI Consultant',
       bio: 'Strategic AI consultant with expertise in enterprise AI implementation and business transformation. PhD from MIT with focus on AI ethics and responsible AI development.',
-      image: 'https://ik.imagekit.io/2t5jvenlr/17221672231404556-removebg-preview.png?updatedAt=1756320396462',
+      image: 'https://ik.imagekit.io/2t5jvenlr/WhatsApp%20Image%202025-08-27%20at%2023.19.30_b796f270.jpg?updatedAt=1756318886682',
       expertise: ['AI Strategy', 'Enterprise Consulting', 'AI Ethics', 'Business Transformation'],
       social: {
         linkedin: 'https://www.linkedin.com/in/eman-sarfraz-146a8728a/',
