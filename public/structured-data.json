@@ -1,0 +1,169 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Nexariza AI - Leading AI Development Company",
+  "alternateName": "Nexariza",
+  "url": "https://www.nexariza.com",
+  "description": "🚀 Nexariza AI is the leading AI development company in 2025, founded by Ahmad Yasin. We specialize in custom AI solutions, neural networks, and enterprise AI consulting with 500+ successful projects worldwide.",
+  "keywords": "AI development, artificial intelligence, machine learning, neural networks, custom AI solutions, enterprise AI consulting, Ahmad Yasin, AI company, business automation, LLM integration",
+  "inLanguage": ["en", "es", "fr", "de", "it", "zh", "ja", "sv"],
+  "author": {
+    "@type": "Person",
+    "name": "Ahmad Yasin",
+    "jobTitle": "CEO & AI Expert",
+    "description": "Leading AI expert and founder of Nexariza AI with expertise in neural networks, machine learning, and enterprise AI solutions.",
+    "url": "https://www.nexariza.com/about",
+    "sameAs": [
+      "https://linkedin.com/in/ahmad-yasin-ai",
+      "https://twitter.com/AhmadYasinAI",
+      "https://github.com/ahmad-yasin-ai"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://www.nexariza.com/#organization",
+    "name": "Nexariza AI",
+    "description": "Leading AI development company providing custom AI solutions worldwide",
+    "url": "https://www.nexariza.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.nexariza.com/logo.png",
+      "width": 512,
+      "height": 512
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Ahmad Yasin"
+    },
+    "foundingDate": "2024",
+    "numberOfEmployees": "10-50",
+    "slogan": "Transforming businesses with cutting-edge AI solutions",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+1-800-NEXARIZA",
+      "contactType": "customer service",
+      "email": "contact@nexariza.com",
+      "availableLanguage": ["English", "Spanish", "French", "German", "Italian", "Chinese", "Japanese", "Swedish"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "Global",
+      "addressRegion": "Worldwide"
+    },
+    "areaServed": "Worldwide",
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "40.7831",
+        "longitude": "-73.9712"
+      },
+      "geoRadius": "25000000"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "150",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "sameAs": [
+      "https://facebook.com/nexarizaai",
+      "https://twitter.com/NexarizaAI",
+      "https://linkedin.com/company/nexariza-ai",
+      "https://instagram.com/nexarizaai",
+      "https://youtube.com/c/nexarizaai"
+    ]
+  },
+  "potentialAction": [
+    {
+      "@type": "SearchAction",
+      "target": "https://www.nexariza.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  ],
+  "mainEntity": [
+    {
+      "@type": "Service",
+      "name": "Custom AI Development",
+      "description": "Tailored AI solutions for businesses including neural networks, machine learning models, and intelligent automation systems.",
+      "provider": {
+        "@id": "https://www.nexariza.com/#organization"
+      },
+      "category": "AI Development",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "AI Development Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Neural Network Development",
+              "description": "Custom neural network solutions for complex business problems"
+            }
+          },
+          {
+            "@type": "Offer", 
+            "itemOffered": {
+              "@type": "Service",
+              "name": "LLM Integration",
+              "description": "Large Language Model integration for business applications"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service", 
+              "name": "Business Automation",
+              "description": "AI-powered automation solutions to streamline business processes"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Enterprise AI Consulting",
+              "description": "Strategic AI consulting for enterprise digital transformation"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.nexariza.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://www.nexariza.com/services"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "About",
+        "item": "https://www.nexariza.com/about"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Portfolio",
+        "item": "https://www.nexariza.com/portfolio"
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "name": "Contact",
+        "item": "https://www.nexariza.com/contact"
+      }
+    ]
+  }
+}
