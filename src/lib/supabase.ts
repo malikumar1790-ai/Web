@@ -95,6 +95,7 @@ export interface ContactSubmission {
   name: string;
   email: string;
   company?: string;
+  phone?: string;
   service?: string;
   message: string;
   status?: string;

@@ -6,9 +6,7 @@ import { useFormSubmission } from '../hooks/useFormSubmission';
 import { useDatabase } from '../hooks/useDatabase';
 import LoadingSpinner from '../components/LoadingSpinner';
 import EnhancedFormValidation, { ValidationRules } from '../components/EnhancedFormValidation';
-import SecurityManager from '../utils/security';
-import { contactService, type ContactSubmission } from '../lib/supabase';
-import { testDatabaseConnection, handleDatabaseError } from '../lib/supabase';
+import ContactFormHandler, { type ContactFormData } from '../utils/contactFormHandler';
 import SEO, { seoConfigs } from '../components/SEO';
 
 const Contact: React.FC = () => {
@@ -64,57 +62,20 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setShowValidation(true);
-    
-    // Rate limiting check
-    const userIP = 'user-' + Date.now(); // In production, get real IP
-    if (!SecurityManager.rateLimiter.isAllowed(userIP, 5, 60000)) {
-      const remainingTime = SecurityManager.rateLimiter.getRemainingTime(userIP, 60000);
-      alert(`Too many attempts. Please wait ${Math.ceil(remainingTime / 1000)} seconds before trying again.`);
-      return;
-    }
 
-    await submit(async () => {
-      // Sanitize form data
-      const sanitizedData = SecurityManager.sanitizeFormData(formData);
+      const formDataToSubmit: ContactFormData = {
+        name: formData.name,
+        email: formData.email,
+        company: formData.company,
+        phone: formData.phone,
+        service: formData.service,
+        message: formData.message
+      };
+
+      const result = await ContactFormHandler.submitContactForm(formDataToSubmit);
       
-      // Check if we're in development or production
-      const isDevelopment = import.meta.env.DEV || 
-                           window.location.hostname === 'localhost' || 
-                           window.location.hostname === '127.0.0.1';
-      
-      if (isDevelopment) {
-        console.log('📧 DEVELOPMENT MODE - Form submitted:', sanitizedData);
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        return { message: 'Development mode: Form submitted successfully!' };
-      }
-      
-      // Store in database if connected
-      if (dbConnected) {
-        try {
-          const submissionData: ContactSubmission = {
-            name: sanitizedData.name,
-            email: sanitizedData.email,
-            company: sanitizedData.company,
-            service: sanitizedData.service,
-            message: sanitizedData.message
-          };
-          
-          await contactService.submitContactForm(submissionData);
-        } catch (dbError) {
-          console.warn('⚠️ Database storage failed, continuing with email:', dbError);
-        }
-      }
-      
-      // Send emails via API
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(sanitizedData),
-      });
-      
-      const result = await response.json();
-      if (!response.ok) {
-        throw new Error(result.message || 'Failed to send message');
+      if (!result.success) {
+        throw new Error(result.error || result.message);
       }
       
       return result;

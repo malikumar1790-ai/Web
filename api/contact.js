@@ -51,7 +51,7 @@ export default async function handler(req, res) {
     console.log('📧 Contact API: Processing request...');
     console.log('📧 Request body:', req.body);
     
-    const { name, email, company, message, service } = req.body;
+    const { name, email, company, phone, message, service } = req.body;
 
     // Comprehensive validation
     const validationErrors = [];
@@ -104,6 +104,7 @@ export default async function handler(req, res) {
       name: name.trim().substring(0, 100),
       email: email.trim().toLowerCase().substring(0, 100),
       company: company ? company.trim().substring(0, 100) : '',
+      phone: phone ? phone.trim().substring(0, 20) : '',
       message: message.trim().substring(0, 2000),
       service: service ? service.trim().substring(0, 100) : 'General Inquiry'
     };
@@ -136,6 +137,7 @@ export default async function handler(req, res) {
           name: sanitizedData.name,
           email: sanitizedData.email,
           company: sanitizedData.company,
+          phone: sanitizedData.phone,
           service: sanitizedData.service,
           message: sanitizedData.message,
           status: 'new',
@@ -211,6 +213,12 @@ export default async function handler(req, res) {
                   <span style="font-weight: 600; color: #374151; min-width: 120px;">🏢 Company:</span>
                   <span style="color: #1f2937; font-weight: 500;">${sanitizedData.company || 'Not provided'}</span>
                 </div>
+                ${sanitizedData.phone ? `
+                <div style="display: flex; align-items: center;">
+                  <span style="font-weight: 600; color: #374151; min-width: 120px;">📞 Phone:</span>
+                  <span style="color: #1f2937; font-weight: 500;">${sanitizedData.phone}</span>
+                </div>
+                ` : ''}
                 <div style="display: flex; align-items: center;">
                   <span style="font-weight: 600; color: #374151; min-width: 120px;">🎯 Service:</span>
                   <span style="color: #1f2937; font-weight: 500;">${sanitizedData.service}</span>
@@ -253,6 +261,7 @@ export default async function handler(req, res) {
         Name: ${sanitizedData.name}
         Email: ${sanitizedData.email}
         Company: ${sanitizedData.company || 'Not provided'}
+        ${sanitizedData.phone ? `Phone: ${sanitizedData.phone}` : ''}
         Service Interest: ${sanitizedData.service}
         
         💬 CLIENT MESSAGE:
@@ -301,6 +310,7 @@ export default async function handler(req, res) {
               <div style="display: grid; gap: 12px;">
                 <div><strong style="color: #374151;">Service Interest:</strong> <span style="color: #1f2937;">${sanitizedData.service}</span></div>
                 <div><strong style="color: #374151;">Company:</strong> <span style="color: #1f2937;">${sanitizedData.company || 'Individual Inquiry'}</span></div>
+                ${sanitizedData.phone ? `<div><strong style="color: #374151;">Phone:</strong> <span style="color: #1f2937;">${sanitizedData.phone}</span></div>` : ''}
                 <div><strong style="color: #374151;">Submitted:</strong> <span style="color: #1f2937;">${new Date().toLocaleString()}</span></div>
               </div>
             </div>
@@ -398,6 +408,7 @@ export default async function handler(req, res) {
         ---------------------------
         Service Interest: ${sanitizedData.service}
         Company: ${sanitizedData.company || 'Individual Inquiry'}
+        ${sanitizedData.phone ? `Phone: ${sanitizedData.phone}` : ''}
         Submitted: ${new Date().toLocaleString()}
         
         ⏰ WHAT HAPPENS NEXT?
